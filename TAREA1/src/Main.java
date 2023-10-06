@@ -524,7 +524,6 @@ public class Main {
         }
         System.out.println();
 
-        //probar 1 pago con tarjeta, 1 pago con transferencia, 2 pago efectivo(que pague justo, que tenga que dar vuelto o que no alvance el dinero)
         //@autocritic el programa funciona al pie de la letracomo se pedia, tengo unas relaciones mal aplicadas, expectativas para trabajos fututos es hacer el codigo adecuado a lo pedido
     }
 }
