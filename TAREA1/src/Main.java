@@ -22,6 +22,14 @@ class Pago{
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
+    @Override
+    public String toString() {
+        return "Pago{" +
+                "monto=" + monto +
+                ", fecha=" + fecha +
+                '}';
+    }
 }
 class Efectivo extends Pago{
     //constructor por defecto
@@ -60,6 +68,13 @@ class Transferencia extends Pago{
     public void setNumCuenta(String numCuenta) {
         this.numCuenta = numCuenta;
     }
+    @Override
+    public String toString() {
+        return "Transferencia{" +
+                "banco='" + banco + '\'' +
+                ", numCuenta='" + numCuenta + '\'' +
+                '}';
+    }
 }
 class Tarjeta extends Pago{
     private String tipo;
@@ -79,6 +94,13 @@ class Tarjeta extends Pago{
     public String getNumTransaccion() {
         return numTransaccion;
     }
+    @Override
+    public String toString() {
+        return "Tarjeta{" +
+                "tipo='" + tipo + '\'' +
+                ", numTransaccion='" + numTransaccion + '\'' +
+                '}';
+    }
 }
 class Direccion{
     private String direccion;
@@ -94,7 +116,9 @@ class Direccion{
     }
     @Override
     public String toString() {
-        return "Dirección: " + direccion;
+        return "Direccion{" +
+                "direccion='" + direccion + '\'' +
+                '}';
     }
 }
 
@@ -121,7 +145,12 @@ class Articulo{
     }
     @Override
     public String toString() {
-        return "Artículo: " + nombre + "\nDescripción: " + descripcion + "\nPeso: " + peso + "\nPrecio: " + precio;
+        return "Articulo{" +
+                "nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", peso=" + peso +
+                ", precio=" + precio +
+                '}';
     }
 }
 
@@ -153,9 +182,15 @@ class Cliente {
     public List<OrdenDeCompra> getOrdenesDeCompra() {
         return ordenesDeCompra;
     }
+
     @Override
     public String toString() {
-        return "Cliente: " + nombre + "\nRUT: " + rut + "\nDirección: " + direccion.getDireccion();
+        return "Cliente{" +
+                "nombre='" + nombre + '\'' +
+                ", rut='" + rut + '\'' +
+                ", direccion=" + direccion +
+                ", ordenesDeCompra=" + ordenesDeCompra +
+                '}';
     }
 }
 
@@ -200,6 +235,17 @@ class OrdenDeCompra {
     }
     public Pago getPago() {
         return pago;
+    }
+    @Override
+    public String toString() {
+        return "OrdenDeCompra{" +
+                "fecha=" + fecha +
+                ", estado='" + estado + '\'' +
+                ", cliente=" + cliente +
+                ", detalle=" + detalle +
+                ", docTributario=" + docTributario +
+                ", pago=" + pago +
+                '}';
     }
 }
 
@@ -249,16 +295,14 @@ class DetalleOrden {
         }
         return pesoTotal;
     }//@descripcion sumar el peso de la todos los articulos añadidos en el detalle
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Detalle de la Orden:\n");
-        for (Articulo articulo : articulos) {
-            sb.append(" - ").append(articulo).append("\n");
-        }
-        sb.append("Precio Sin el Iva: ").append(getPrecioSinIva()).append("\n");
-        sb.append("Precio Total: ").append(getPrecioTotal());
-        return sb.toString();
+        return "DetalleOrden{" +
+                "cantidad=" + cantidad +
+                ", articulos=" + articulos +
+                ", precioTotal=" + precioTotal +
+                '}';
     }
 }
 
@@ -290,6 +334,14 @@ class DocTributario {
     }
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
+    }
+    @Override
+    public String toString() {
+        return "DocTributario{" +
+                "rut='" + rut + '\'' +
+                ", fecha=" + fecha +
+                ", direccion=" + direccion +
+                '}';
     }
 }
 class Boleta extends DocTributario{
@@ -471,8 +523,7 @@ public class Main {
             System.out.println("Monto Pagado: " + pagoEfectivo.getMonto());
         }
         System.out.println();
-        //bbbbb
-        //cccc
+
         //probar 1 pago con tarjeta, 1 pago con transferencia, 2 pago efectivo(que pague justo, que tenga que dar vuelto o que no alvance el dinero)
         //@autocritic el programa funciona al pie de la letracomo se pedia, tengo unas relaciones mal aplicadas, expectativas para trabajos fututos es hacer el codigo adecuado a lo pedido
     }
